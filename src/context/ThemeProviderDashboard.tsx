@@ -4,7 +4,7 @@ import { useDarkMode } from '../hooks/useDarkMode';
 import { ToastContainer } from 'react-toastify';
 import { theme } from './MaterialThemeProvider';
 
-export function ThemeProvider({ children }: { children: React.ReactNode }) {
+export function ThemeProviderDashboard({ children }: { children: React.ReactNode }) {
   const [dark] = useDarkMode();
 
   const themeMui = dark ? theme.lightTheme : theme.darkTheme;
@@ -17,14 +17,10 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
         color: themeMui.palette.text.primary,
       }}
     >
-      {/* <header className="p-4">
-        <button onClick={toggle} className="cursor-pointer">
-          {dark ? '☀️' : '🌙'}
-        </button>
-      </header> */}
+      <header className="p-4"></header>
 
       {/* O section vai ocupar o espaço restante e centralizar o conteúdo */}
-      <section className="flex-grow flex items-cente justify-center ">
+      <section className="flex-grow flex items-cente justify-center px-4">
         {children}
 
         <ToastContainer
@@ -40,9 +36,10 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
         />
       </section>
 
-      {/* <footer className="p-4 text-center">
+      <footer className="p-4 text-center">
+        {/* Seu footer aqui */}
         Create 2025
-      </footer> */}
+      </footer>
     </div>
   );
 }
