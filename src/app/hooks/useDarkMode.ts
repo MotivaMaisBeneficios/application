@@ -1,7 +1,8 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
+import { useGlobalContext } from '../context/GlobalContext';
 
 export function useDarkMode() {
-  const [enabled, setEnabled] = useState(false);
+  const { dark, setDark } = useGlobalContext();
 
   useEffect(() => {
     const stored = localStorage.getItem('theme');
@@ -9,20 +10,16 @@ export function useDarkMode() {
       '(prefers-color-scheme: dark)',
     ).matches;
     const initial = stored === 'dark' || (!stored && prefersDark);
-    setEnabled(initial);
+    setDark(initial);
     document.documentElement.classList.toggle('dark', initial);
   }, []);
 
   const toggleTheme = () => {
-    const isDark = !enabled;
-    setEnabled(isDark);
+    const isDark = !dark;
+    setDark(isDark);
     document.documentElement.classList.toggle('dark', isDark);
     localStorage.setItem('theme', isDark ? 'dark' : 'light');
   };
-  useEffect(() => {
-    const change = localStorage.getItem('theme');
-    console.log({ change });
-  }, [enabled]);
 
-  return [enabled, toggleTheme] as const;
+  return [dark, toggleTheme] as const;
 }

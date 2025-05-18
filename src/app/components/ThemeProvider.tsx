@@ -1,8 +1,8 @@
 'use client';
 import React from 'react';
-// import { ThemeProvider as MuiThemeProvider } from '@mui/material/styles';
 import { useDarkMode } from '../hooks/useDarkMode';
 import { theme } from '@/app/components/MaterialThemeProvider';
+import { ToastContainer } from 'react-toastify';
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [dark, toggle] = useDarkMode();
@@ -10,7 +10,6 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const themeMui = dark ? theme.lightTheme : theme.darkTheme;
 
   return (
-    // <MuiThemeProvider theme={theme}>
     <div
       className="flex flex-col min-h-screen"
       style={{
@@ -27,6 +26,18 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
       {/* O section vai ocupar o espaço restante e centralizar o conteúdo */}
       <section className="flex-grow flex items-cente justify-center px-4">
         {children}
+
+        <ToastContainer
+          position="top-right"
+          autoClose={3000}
+          hideProgressBar={false}
+          newestOnTop
+          closeOnClick
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme={!dark ? 'dark' : 'light'}
+        />
       </section>
 
       <footer className="p-4 text-center">
@@ -34,6 +45,5 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
         Create 2025
       </footer>
     </div>
-    // </MuiThemeProvider>
   );
 }
