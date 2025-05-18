@@ -1,6 +1,6 @@
 'use client';
-import { theme } from '@/app/components/MaterialThemeProvider';
-import { useGlobalContext } from '@/app/context/GlobalContext';
+import { theme } from '@/context/MaterialThemeProvider';
+import { useGlobalContext } from '@/context/GlobalContext';
 import { Button as MaterialButton } from '@mui/material';
 
 interface ButtonProps {

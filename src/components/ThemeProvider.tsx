@@ -1,8 +1,8 @@
 'use client';
 import React from 'react';
 import { useDarkMode } from '../hooks/useDarkMode';
-import { theme } from '@/app/components/MaterialThemeProvider';
 import { ToastContainer } from 'react-toastify';
+import { theme } from '../context/MaterialThemeProvider';
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [dark, toggle] = useDarkMode();

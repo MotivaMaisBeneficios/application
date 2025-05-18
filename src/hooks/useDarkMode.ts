@@ -1,5 +1,5 @@
+import { useGlobalContext } from '@/context/GlobalContext';
 import { useEffect } from 'react';
-import { useGlobalContext } from '../context/GlobalContext';
 
 export function useDarkMode() {
   const { dark, setDark } = useGlobalContext();

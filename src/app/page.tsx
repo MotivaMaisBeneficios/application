@@ -1,9 +1,9 @@
 'use client';
-import Input from '@/app/components/Global/Input';
 import * as Yup from 'yup';
-import { GlobalForm } from '@/app/components/Global/Form';
-import Button from '@/app/components/Global/Button';
-import { toast } from '@/app/utils/toatfy';
+import { toast } from '@/utils/toatfy';
+import { GlobalForm } from '@/components/Global/Form';
+import Input from '@/components/Global/Input';
+import Button from '@/components/Global/Button';
 
 export default function Home() {
   const schema = Yup.object({

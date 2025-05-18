@@ -1,8 +1,8 @@
 'use client';
 import { TextField } from '@mui/material';
-import { theme } from '@/app/components/MaterialThemeProvider';
-import { useGlobalContext } from '@/app/context/GlobalContext';
+import { useGlobalContext } from '@/context/GlobalContext';
 import { useField } from 'formik';
+import { theme } from '@/context/MaterialThemeProvider';
 
 interface InputProps {
   label: string;
