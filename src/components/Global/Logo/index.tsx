@@ -10,7 +10,7 @@ interface LogoProps {
 
 const Logo = ({ image, alt, text, isExpanded }: LogoProps) => {
   return isExpanded ? (
-    <div className="mt-4 text-lg font-bold text-gray-800 flex">
+    <div className="mt-4 text-lg font-bold flex">
       <Image
         src={image}
         alt={alt || 'image-company-logo'}
@@ -21,7 +21,7 @@ const Logo = ({ image, alt, text, isExpanded }: LogoProps) => {
       {text && <p className="font-normal"> - {text}</p>}
     </div>
   ) : (
-    <div className="mt-4 text-lg font-bold text-gray-800">
+    <div className="mt-4 text-lg font-bold">
       <Image
         src={image}
         alt={alt || 'image-company-logo'}

@@ -4,8 +4,10 @@ import { toast } from '@/utils/toatfy';
 import { GlobalForm } from '@/components/Global/Form';
 import Input from '@/components/Global/Input';
 import Button from '@/components/Global/Button';
+import { useCookie } from '@/hooks/useCookie';
 
 export default function Home() {
+  const { setCookie } = useCookie();
   const schema = Yup.object({
     login: Yup.string().required('Login obrigatório').email('Email inválido'),
     pass: Yup.string().required('Senha obrigatória'),
@@ -18,7 +20,7 @@ export default function Home() {
       headers: { 'Content-Type': 'application/json' },
     });
 
-    document.cookie = `token=${JSON.stringify(values)}; path=/; max-age=86400;`;
+    setCookie('token', JSON.stringify(values), 1);
 
     if (res.ok) {
       toast.success('Login efetuado!');

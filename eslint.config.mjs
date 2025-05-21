@@ -26,17 +26,17 @@ export default defineConfig([
       // Regras úteis
       'no-console': 'warn',
       'no-debugger': 'error',
-      'eqeqeq': ['error', 'always'],
-      'curly': ['error', 'all'],
+      eqeqeq: ['error', 'always'],
+      curly: ['error', 'all'],
       'no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
       'no-var': 'error',
       'prefer-const': 'error',
 
       // Estilo
-      'semi': ['error', 'always'],
-      'quotes': ['error', 'single'],
+      semi: ['error', 'always'],
+      quotes: ['error', 'single'],
       'comma-dangle': ['error', 'always-multiline'],
-      'indent': ['error', 2],
+      // indent: ['error', 2],
       'object-curly-spacing': ['error', 'always'],
     },
   },

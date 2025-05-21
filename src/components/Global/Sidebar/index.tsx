@@ -1,8 +1,10 @@
 'use client';
 
 import { useState } from 'react';
+import { theme } from '@/context/MaterialThemeProvider';
 import Logo from '../Logo';
 import logoNext from '@/../public/next.svg';
+import { useDarkMode } from '@/hooks/useDarkMode';
 
 interface SidebarProps {
   fixed: boolean;
@@ -10,23 +12,32 @@ interface SidebarProps {
 }
 
 const Sidebar = ({ fixed, setFixed }: SidebarProps) => {
+  const [dark] = useDarkMode();
   const [hovered, setHovered] = useState(false);
 
+  const themeGlobal = dark ? theme.lightTheme : theme.darkTheme;
+
   const isExpanded = fixed || hovered;
+
+  console.log({ color: themeGlobal.palette.text.primary });
 
   return (
     <aside
       className={`${
         fixed ? 'relative' : 'absolute z-50'
       } top-0 left-0 h-full flex flex-col justify-between transition-all duration-300
-        ${isExpanded ? 'w-64' : 'w-16'} bg-gray-200 p-2`}
+        ${isExpanded ? 'w-64' : 'w-16'} bg-[${
+        themeGlobal.palette.background.default
+      }] p-2 text-${themeGlobal.palette.text.primary}  shadow-lg shadow-[${
+        themeGlobal.palette.text.primary
+      }]`}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
       {/* Topo: botão + logotipo */}
       <div>
         <button
-          className="w-full text-left text-sm text-gray-600 hover:text-black"
+          className={`w-full text-left text-sm text-${themeGlobal.palette.text.primary}  mb-2`}
           onClick={() => setFixed(!fixed)}
         >
           {fixed ? '🔒 Fixado (Clique p/ soltar)' : '📌'}
@@ -41,7 +52,7 @@ const Sidebar = ({ fixed, setFixed }: SidebarProps) => {
       </div>
 
       {/* Centro: navegação */}
-      <div className="mt-4 text-sm flex-1 overflow-auto">
+      <div className={'mt-4 text-sm flex-1 overflow-auto'}>
         {isExpanded && (
           <nav>
             <ul className="list-disc list-inside space-y-2">

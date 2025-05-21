@@ -17,12 +17,6 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
         color: themeMui.palette.text.primary,
       }}
     >
-      {/* <header className="p-4">
-        <button onClick={toggle} className="cursor-pointer">
-          {dark ? '☀️' : '🌙'}
-        </button>
-      </header> */}
-
       {/* O section vai ocupar o espaço restante e centralizar o conteúdo */}
       <section className="flex-grow flex items-cente justify-center ">
         {children}
@@ -39,10 +33,6 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
           theme={!dark ? 'dark' : 'light'}
         />
       </section>
-
-      {/* <footer className="p-4 text-center">
-        Create 2025
-      </footer> */}
     </div>
   );
 }
