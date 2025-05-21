@@ -1,26 +1,18 @@
-'use client';
-
-import { Geist, Geist_Mono } from 'next/font/google';
 import { ThemeProviderDashboard } from '@/context/ThemeProviderDashboard';
+import { Metadata } from 'next';
 
-const geistSans = Geist({ variable: '--font-geist-sans', subsets: ['latin'] });
-const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
-  subsets: ['latin'],
-});
+export const metadata: Metadata = {
+  title: {
+    template: 'Dashboard - %s',
+    default: 'Dashboard',
+  },
+  description: 'Área administrativa',
+};
 
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        <ThemeProviderDashboard>{children}</ThemeProviderDashboard>
-      </body>
-    </html>
-  );
+  return <ThemeProviderDashboard>{children}</ThemeProviderDashboard>;
 }

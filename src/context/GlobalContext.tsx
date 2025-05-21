@@ -10,7 +10,12 @@ type GlobalContextType = {
 const GlobalContext = createContext<GlobalContextType | undefined>(undefined);
 
 export const GlobalProvider = ({ children }: { children: ReactNode }) => {
-  const [dark, setDark] = useState(false);
+  const [dark, setDark] = useState<boolean>(() => {
+    if (typeof window !== 'undefined') {
+      return localStorage.getItem('theme') === 'dark';
+    }
+    return false; // ou true, depende do seu default
+  });
 
   return (
     <GlobalContext.Provider value={{ dark, setDark }}>

@@ -1,7 +1,6 @@
 'use client';
 import React, { useState } from 'react';
 import { useDarkMode } from '../hooks/useDarkMode';
-import { ToastContainer } from 'react-toastify';
 import { theme } from './MaterialThemeProvider';
 import Sidebar from '@/components/Global/Sidebar';
 
@@ -14,7 +13,6 @@ export function ThemeProviderDashboard({
   const [sidebarFixed, setSidebarFixed] = useState(false);
 
   const themeMui = dark ? theme.lightTheme : theme.darkTheme;
-
   return (
     <div
       className="flex w-full h-screen overflow-hidden transition-all duration-300"
@@ -26,7 +24,7 @@ export function ThemeProviderDashboard({
       <Sidebar fixed={sidebarFixed} setFixed={setSidebarFixed} />
 
       <div
-        className={`flex flex-col flex-1 transition-all duration-300 ${
+        className={`flex flex-col flex-1 transition-all duration-300  py-2 ${
           sidebarFixed ? 'ml-[1rem]' : 'ml-[5rem]'
         }`}
       >
@@ -45,20 +43,7 @@ export function ThemeProviderDashboard({
         </header>
 
         {/* Conteúdo com rolagem */}
-        <div className="flex-1 overflow-y-auto py-4">
-          {children}
-          <ToastContainer
-            position="top-right"
-            autoClose={3000}
-            hideProgressBar={false}
-            newestOnTop
-            closeOnClick
-            pauseOnFocusLoss
-            draggable
-            pauseOnHover
-            theme={!dark ? 'dark' : 'light'}
-          />
-        </div>
+        <div className="flex-1 overflow-y-auto py-4">{children}</div>
 
         {/* Footer fixo */}
         <footer className="h-20 border flex items-center justify-center shrink-0">

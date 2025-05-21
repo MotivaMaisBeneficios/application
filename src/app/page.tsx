@@ -5,8 +5,10 @@ import { GlobalForm } from '@/components/Global/Form';
 import Input from '@/components/Global/Input';
 import Button from '@/components/Global/Button';
 import { useCookie } from '@/hooks/useCookie';
+import { useRouter } from 'next/navigation';
 
 export default function Home() {
+  const history = useRouter();
   const { setCookie } = useCookie();
   const schema = Yup.object({
     login: Yup.string().required('Login obrigatório').email('Email inválido'),
@@ -14,19 +16,9 @@ export default function Home() {
   });
 
   const login = async (values: { login: string; pass: string }) => {
-    const res = await fetch('/api/login', {
-      method: 'POST',
-      body: JSON.stringify(values),
-      headers: { 'Content-Type': 'application/json' },
-    });
-
     setCookie('token', JSON.stringify(values), 1);
-
-    if (res.ok) {
-      toast.success('Login efetuado!');
-    } else {
-      toast.error('Erro ao logar!');
-    }
+    history.push('/dashboard');
+    toast.success('Login efetuado!');
   };
 
   return (

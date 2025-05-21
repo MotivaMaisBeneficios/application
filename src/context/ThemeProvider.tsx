@@ -11,14 +11,14 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
 
   return (
     <div
-      className="flex flex-col min-h-screen"
+      className="flex flex-col min-h-screen "
       style={{
         backgroundColor: themeMui.palette.background.default,
         color: themeMui.palette.text.primary,
       }}
     >
       {/* O section vai ocupar o espaço restante e centralizar o conteúdo */}
-      <section className="flex-grow flex items-cente justify-center ">
+      <div className="flex-grow flex items-cente justify-center bg-amber-200">
         {children}
 
         <ToastContainer
@@ -32,7 +32,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
           pauseOnHover
           theme={!dark ? 'dark' : 'light'}
         />
-      </section>
+      </div>
     </div>
   );
 }

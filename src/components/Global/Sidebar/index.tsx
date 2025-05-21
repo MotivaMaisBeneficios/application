@@ -23,14 +23,16 @@ const Sidebar = ({ fixed, setFixed }: SidebarProps) => {
 
   return (
     <aside
-      className={`${
-        fixed ? 'relative' : 'absolute z-50'
-      } top-0 left-0 h-full flex flex-col justify-between transition-all duration-300
-        ${isExpanded ? 'w-64' : 'w-16'} bg-[${
-        themeGlobal.palette.background.default
-      }] p-2 text-${themeGlobal.palette.text.primary}  shadow-lg shadow-[${
-        themeGlobal.palette.text.primary
-      }]`}
+      style={{
+        backgroundColor: themeGlobal.palette.background.default,
+        color: themeGlobal.palette.text.primary,
+        boxShadow: `0 4px 6px ${themeGlobal.palette.text.primary}`, // shadow custom
+      }}
+      className={`
+    ${fixed ? 'relative' : 'absolute z-50'}
+    top-0 left-0 h-full flex flex-col justify-between transition-all duration-300
+    ${isExpanded ? 'w-64' : 'w-16'} p-2
+  `}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
