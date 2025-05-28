@@ -3,13 +3,14 @@ import React, { useState } from 'react';
 import { useDarkMode } from '../hooks/useDarkMode';
 import { theme } from './MaterialThemeProvider';
 import Sidebar from '@/components/Global/Sidebar';
+import ThemeToggle from '@/components/Global/ThemeToggle';
 
 export function ThemeProviderDashboard({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const [dark, toggleTheme] = useDarkMode();
+  const [dark] = useDarkMode();
   const [sidebarFixed, setSidebarFixed] = useState(false);
 
   const themeMui = dark ? theme.lightTheme : theme.darkTheme;
@@ -32,14 +33,15 @@ export function ThemeProviderDashboard({
         <header className="h-20 border flex items-center px-4 shrink-0">
           NavBar
           <div className="flex-1" />
-          <button
+          {/* <button
             className={`bg-[${themeMui.palette.background.default}] p-2 rounded 
             text-${themeMui.palette.text.primary}`}
             onClick={toggleTheme}
             type="button"
           >
             {dark ? '☀️ Light' : '🌙 Dark'}
-          </button>
+          </button> */}
+          <ThemeToggle />
         </header>
 
         {/* Conteúdo com rolagem */}

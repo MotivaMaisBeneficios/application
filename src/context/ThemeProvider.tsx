@@ -17,8 +17,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
         color: themeMui.palette.text.primary,
       }}
     >
-      {/* O section vai ocupar o espaço restante e centralizar o conteúdo */}
-      <div className="flex-grow flex items-cente justify-center bg-amber-200">
+      <div className="flex-grow flex items-cente justify-center">
         {children}
 
         <ToastContainer
