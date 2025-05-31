@@ -1,5 +1,5 @@
 'use client';
-import React, { useState } from 'react';
+import React from 'react';
 import { useDarkMode } from '../hooks/useDarkMode';
 import { theme } from './MaterialThemeProvider';
 import Sidebar from '@/components/Global/Sidebar';
@@ -11,7 +11,6 @@ export function ThemeProviderDashboard({
   children: React.ReactNode;
 }) {
   const [dark] = useDarkMode();
-  const [sidebarFixed, setSidebarFixed] = useState(false);
 
   const themeMui = dark ? theme.lightTheme : theme.darkTheme;
   return (
@@ -22,12 +21,12 @@ export function ThemeProviderDashboard({
         color: themeMui.palette.text.primary,
       }}
     >
-      <Sidebar fixed={sidebarFixed} setFixed={setSidebarFixed} />
+      <Sidebar />
 
       <div
-        className={`flex flex-col flex-1 transition-all duration-300  py-2 ${
-          sidebarFixed ? 'ml-[1rem]' : 'ml-[5rem]'
-        }`}
+        className={
+          'flex flex-col flex-1 transition-all duration-300  py-2 ml-[1rem]'
+        }
       >
         {/* Header fixo */}
         <header className="h-20 border flex items-center px-4 shrink-0">
@@ -49,7 +48,9 @@ export function ThemeProviderDashboard({
 
         {/* Footer fixo */}
         <footer className="h-20 border flex items-center justify-center shrink-0">
-          Create 2025
+          <p className="text-center text-sm mt-4">
+            © {new Date().getFullYear()} Create. All rights reserved.
+          </p>
         </footer>
       </div>
     </div>

@@ -30,7 +30,7 @@ export default function Dashboard() {
   };
 
   return (
-    <div className="grid grid-cols-12 gap-4 p-4 w-full h-full overflow-auto">
+    <div className="grid grid-cols-12 gap-4 w-full h-full overflow-auto">
       {[...Array(3)].map((_, i) => (
         <div
           key={`radial-${i}`}
